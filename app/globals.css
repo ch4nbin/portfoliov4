@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  background: #fff;
+  color: #000;
+}
+
+body {
+  padding: 80px 60px 120px;
+  max-width: 480px;
+  margin-left: auto;
+  text-align: right;
+}
+
+h1 {
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 40px;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  margin-bottom: 8px;
+}
+
+nav ul li button {
+  background: none;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+nav ul li button:hover {
+  text-decoration: none;
+}
+
+nav ul li button.active {
+  text-decoration: none;
+  color: #999;
+}
+
+.section-content {
+  margin-top: 40px;
+  text-align: right;
+}
+
+.section-content p {
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.entry {
+  margin-bottom: 24px;
+}
+
+.entry-title {
+  font-weight: bold;
+}
+
+.entry-meta {
+  color: #999;
+  margin-bottom: 2px;
+}
+
+.entry-bullets {
+  list-style: none;
+  margin-top: 6px;
+}
+
+.entry-bullets li {
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+.entry-bullets li::before {
+  content: "— ";
+  color: #999;
+}
+
+.courses {
+  margin-top: 4px;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.project-links {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.project-links a {
+  color: #000;
+}
+
+.skill-row {
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.skill-label {
+  color: #999;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-links a {
+  color: #000;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 48px 24px 80px;
+  }
+}
