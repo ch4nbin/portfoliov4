@@ -7,14 +7,17 @@ type Section = "about" | "education" | "experience" | "projects" | "art" | "writ
 
 const sections: Section[] = ["about", "education", "experience", "projects", "art", "writing", "more about me"];
 
-function SectionContent({ section }: { section: Section }) {
+function SectionContent({ section, onNavigate }: { section: Section; onNavigate: (s: Section) => void }) {
   switch (section) {
     case "about":
       return (
         <div className="section-content">
-          <p>{content.about}</p>
+          <p>
+            I&apos;m a sophomore at Princeton University studying computer science with minors in statistics &amp; machine learning and visual arts. I&apos;m interested broadly in AI, high-performance computing, and{" "}
+            <button className="inline-link" onClick={() => onNavigate("more about me")}>the pursuit of truth</button>.
+          </p>
           <div className="contact-links">
-            <a href={`mailto:${content.links.email}`}>{content.links.email}</a>
+            <a href={`mailto:${content.links.email}`}>email</a>
             <a href={content.links.linkedin} target="_blank" rel="noopener noreferrer">linkedin</a>
             <a href={content.links.github} target="_blank" rel="noopener noreferrer">github</a>
           </div>
@@ -33,28 +36,39 @@ function SectionContent({ section }: { section: Section }) {
               <div className="courses">{ed.courses.join(", ")}</div>
             </div>
           ))}
+          <div className="entry">
+            <div className="entry-title">Technical Skills</div>
+            <div className="skill-row"><span className="skill-label">languages — </span>{content.skills.languages}</div>
+            <div className="skill-row"><span className="skill-label">frameworks — </span>{content.skills.frameworks}</div>
+            <div className="skill-row"><span className="skill-label">tools — </span>{content.skills.tools}</div>
+          </div>
         </div>
       );
 
     case "experience":
       return (
         <div className="section-content">
-          {content.experience.map((job) => (
-            <div className="entry" key={job.company + job.date}>
-              <div className="entry-title">{job.company}</div>
-              <div className="entry-meta">{job.role} · {job.location}</div>
-              <div className="entry-meta">{job.date}</div>
-              <ul className="entry-bullets">
-                {job.bullets.map((b, i) => <li key={i}>{b}</li>)}
-              </ul>
-            </div>
-          ))}
+          <div className="exp-table">
+            {content.experience.map((job) => (
+              <div className="exp-row" key={job.company + job.date}>
+                <div className="exp-left">
+                  <span className="entry-title">{job.company}</span>
+                  {job.recent && <span className="recent-badge">recent</span>}
+                </div>
+                <div className="exp-mid">
+                  <span className="entry-meta">{job.role}</span>
+                  <span className="entry-meta exp-date">{job.date}</span>
+                </div>
+                <div className="exp-right entry-summary">{job.summary}</div>
+              </div>
+            ))}
+          </div>
         </div>
       );
 
     case "projects":
       return (
-        <div className="section-content">
+        <div className="section-content proj-grid">
           {content.projects.map((proj) => (
             <div className="entry" key={proj.name}>
               <div className="entry-title">{proj.name}</div>
@@ -89,36 +103,47 @@ function SectionContent({ section }: { section: Section }) {
     case "more about me":
       return (
         <div className="section-content">
-          <p>{content.more}</p>
-          <div className="skill-row"><span className="skill-label">languages — </span>{content.skills.languages}</div>
-          <div className="skill-row"><span className="skill-label">frameworks — </span>{content.skills.frameworks}</div>
-          <div className="skill-row"><span className="skill-label">tools — </span>{content.skills.tools}</div>
+          <div className="credo-label">{content.more}</div>
+          <ul className="credo">
+            {content.credo.map((item, i) => (
+              <li key={i}>
+                <div className="credo-line">{item.line}</div>
+                {item.text && <p className="credo-text">{item.text}</p>}
+              </li>
+            ))}
+          </ul>
         </div>
       );
   }
 }
 
 export default function Home() {
-  const [active, setActive] = useState<Section | null>(null);
+  const [active, setActive] = useState<Section | null>("about");
 
   return (
     <main>
-      <h1>{content.name}</h1>
-      <nav>
-        <ul>
-          {sections.map((s) => (
-            <li key={s}>
-              <button
-                className={active === s ? "active" : ""}
-                onClick={() => setActive(active === s ? null : s)}
-              >
-                {s}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      {active && <SectionContent section={active} />}
+      <div className="menu">
+        <h1>{content.name}</h1>
+        <nav>
+          <ul>
+            {sections.map((s) => (
+              <li key={s}>
+                <button
+                  className={active === s ? "active" : ""}
+                  onClick={() => setActive(active === s ? null : s)}
+                >
+                  {s}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+      {active && (
+        <div className={["experience", "projects", "more about me"].includes(active) ? "section-wrapper-wide" : "section-wrapper"}>
+          <SectionContent section={active} onNavigate={setActive} />
+        </div>
+      )}
     </main>
   );
 }
