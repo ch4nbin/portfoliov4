@@ -34,7 +34,7 @@ export const content = {
 
   experience: [
     {
-      company: "Princeton University COS",
+      company: "Together AI",
       role: "Undergraduate Researcher",
       date: "Sep 2026 – Present (Incoming)",
       location: "Princeton, NJ",
@@ -161,7 +161,7 @@ export const content = {
     },
     {
       line: "II. Until death, all defeat is psychological.",
-      text: "I have died many times, and yet I am still here. If the death of a dream is enough to convince you to stop dreaming altogether, then they will always be just dreams. If there is one thing I know to be true about human beings, it is that we are capable of creativity and resilience, capable of great things. An overnight success takes thousands of nights. We owe it to ourselves to see things through, to keep getting back up, again and again, because that is ultimately what is required to live a beautiful life, in every sense of the word.",
+      text: "We as human beings are capable of creativity and resilience, of great things.",
     },
     {
       line: "III. No one is ever ready until they are.",

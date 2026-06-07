@@ -53,7 +53,7 @@ function SectionContent({ section, onNavigate }: { section: Section; onNavigate:
               <div className="exp-row" key={job.company + job.date}>
                 <div className="exp-left">
                   <span className="entry-title">{job.company}</span>
-                  {job.recent && <span className="recent-badge">recent</span>}
+                  {job.recent && <span className="recent-badge">current</span>}
                 </div>
                 <div className="exp-mid">
                   <span className="entry-meta">{job.role}</span>
