@@ -52,7 +52,7 @@ export const content = {
       date: "May 2026 – Aug 2026",
       location: "Frisco, TX",
       recent: true,
-      summary: "Built AI agents and multi-agent systems using LLMs, LangGraph, and RAG to automate T-Mobile business platforms.",
+      summary: "Built multi-agent AI systems using LLMs, LangGraph, and RAG to automate T-Mobile business platforms.",
       bullets: [
         "Developed AI agents powered by LLMs, tool calling, and multi-agent systems to automate T-Mobile business platforms.",
         "Built Python and FastAPI services to power agent execution and workflow orchestration across production AI systems.",
@@ -73,7 +73,7 @@ export const content = {
     },
     {
       company: "Princeton Stigma and Social Perception Lab",
-      role: "Machine Learning Research Intern",
+      role: "ML Research Intern",
       date: "Jan 2026 – Present",
       location: "Princeton, NJ",
       summary: "Applied NLP embeddings and ML pipelines to analyze 30K+ conversational text segments and quantify social patterns.",

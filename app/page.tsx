@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { content } from "../content";
+import AsciiAnimation from "./AsciiAnimation";
 
 type Section = "about" | "education" | "experience" | "projects" | "art" | "writing" | "more about me";
 
@@ -38,9 +39,9 @@ function SectionContent({ section, onNavigate }: { section: Section; onNavigate:
           ))}
           <div className="entry">
             <div className="entry-title">Technical Skills</div>
-            <div className="skill-row"><span className="skill-label">languages — </span>{content.skills.languages}</div>
-            <div className="skill-row"><span className="skill-label">frameworks — </span>{content.skills.frameworks}</div>
-            <div className="skill-row"><span className="skill-label">tools — </span>{content.skills.tools}</div>
+            <div className="skill-row"><span className="skill-label"><span className="skill-label-text">languages</span> — </span>{content.skills.languages}</div>
+            <div className="skill-row"><span className="skill-label"><span className="skill-label-text">frameworks</span> — </span>{content.skills.frameworks}</div>
+            <div className="skill-row"><span className="skill-label"><span className="skill-label-text">tools</span> — </span>{content.skills.tools}</div>
           </div>
         </div>
       );
@@ -118,7 +119,7 @@ function SectionContent({ section, onNavigate }: { section: Section; onNavigate:
 }
 
 export default function Home() {
-  const [active, setActive] = useState<Section | null>("about");
+  const [active, setActive] = useState<Section | null>(null);
 
   return (
     <main>
@@ -139,9 +140,13 @@ export default function Home() {
           </ul>
         </nav>
       </div>
-      {active && (
+      {active ? (
         <div className={["experience", "projects", "more about me"].includes(active) ? "section-wrapper-wide" : "section-wrapper"}>
           <SectionContent section={active} onNavigate={setActive} />
+        </div>
+      ) : (
+        <div className="ascii-center">
+          <AsciiAnimation />
         </div>
       )}
     </main>

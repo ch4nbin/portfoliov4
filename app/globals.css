@@ -138,7 +138,7 @@ nav ul li button.active {
   margin-bottom: 4px;
 }
 
-.skill-label {
+.skill-label-text {
   text-decoration: underline;
 }
 
@@ -238,6 +238,30 @@ nav ul li button.active {
 
 .credo-text {
   margin-top: 6px;
+}
+
+/* ── ASCII animation ── */
+
+.ascii-center {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.ascii-anim {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #000;
+  letter-spacing: 0.05em;
+  user-select: none;
+  white-space: pre;
 }
 
 /* ── Mobile ── */
