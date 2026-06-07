@@ -123,6 +123,7 @@ export default function Home() {
 
   return (
     <main>
+      <div className="mobile-container">
       <div className="menu">
         <h1 style={{ cursor: active ? "pointer" : "default" }} onClick={() => setActive(null)}>{content.name}</h1>
         <nav>
@@ -131,9 +132,10 @@ export default function Home() {
               <li key={s}>
                 <button
                   className={active === s ? "active" : ""}
-                  onClick={() => setActive(active === s ? null : s)}
+                  onClick={(e) => { setActive(active === s ? null : s); (e.currentTarget as HTMLButtonElement).blur(); }}
                 >
-                  {s}
+                  <span className="nav-full">{s}</span>
+                  <span className="nav-short">{s === "more about me" ? "more" : s === "education" ? "edu" : s === "experience" ? "exp" : s}</span>
                 </button>
               </li>
             ))}
@@ -149,6 +151,7 @@ export default function Home() {
           <AsciiAnimation />
         </div>
       )}
+      </div>
     </main>
   );
 }
