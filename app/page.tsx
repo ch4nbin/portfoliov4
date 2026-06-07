@@ -124,7 +124,7 @@ export default function Home() {
   return (
     <main>
       <div className="menu">
-        <h1>{content.name}</h1>
+        <h1 style={{ cursor: active ? "pointer" : "default" }} onClick={() => setActive(null)}>{content.name}</h1>
         <nav>
           <ul>
             {sections.map((s) => (
